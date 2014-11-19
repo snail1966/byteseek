@@ -224,6 +224,9 @@ public class FileReader extends AbstractReader {
 	 * @throws IllegalArgumentException
 	 *             if the file passed in is null.
 	 */
+	// BNO - this isn't actually reading the File contents into Windows 
+	// and adding to the file contents to the cache (unless it's
+	// already in one or more Windows contained in the cache being passed in?)
 	public FileReader(final File file, final int windowSize,
 			final WindowCache cache) throws FileNotFoundException {
 		super(windowSize, cache);
@@ -248,6 +251,7 @@ public class FileReader extends AbstractReader {
 	/**
 	 * {@inheritDoc}
 	 */
+	//BNO - we're not adding the newly created window to the cache?
 	@Override
 	final Window createWindow(final long windowStart) throws IOException {
 		try {

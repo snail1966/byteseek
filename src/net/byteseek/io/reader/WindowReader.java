@@ -48,7 +48,7 @@ import java.io.IOException;
  * The two access methods can be combined to provide fast matching or searching.
  * Matching or searching within a Window will normally be faster, as reading can
  * be performed on a byte array directly. Reading a byte at a position allows
- * matching or searching at any position. This can be useful to run an algorithm
+ * matching or searching at any position. This can be useful to run an algorit hm
  * over a Window boundary without building in knowledge of the Windows into the
  * algorithm. However, this is likely to be slower, as every read of a byte
  * carries an additional method call overhead.
@@ -80,6 +80,8 @@ public interface WindowReader extends Closeable {
 	 * position requested, otherwise null must be returned. Any position less
 	 * than zero, or greater than or equal to the length of the reader MUST
 	 * return a null window,
+	 * 
+	 * BNO-BS2: Is this in line with 
 	 * 
 	 * @param position
 	 *            The position of the byte to read in the underlying data.

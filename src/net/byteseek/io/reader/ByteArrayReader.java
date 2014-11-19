@@ -57,6 +57,9 @@ public class ByteArrayReader extends AbstractReader {
 	 */
 	public ByteArrayReader(final byte[] bytes) {
 		super(bytes == null ? 0 : bytes.length, NoCache.NO_CACHE);
+		// BNO - next statement redundant since the Abstract base class throws an exception if we pass 0 as the 
+		// 1st argument to its constructor.  Possibly swap the statements and throw an error here for any null
+		// or zero length array.?
 		if (bytes == null) {
 			throw new IllegalArgumentException(
 					"Null byte array passed in to ByteArrayReader.");
@@ -80,6 +83,9 @@ public class ByteArrayReader extends AbstractReader {
 	/**
 	 * {@inheritDoc}
 	 */
+	// BNO - we don't make any use of windowStart in the following method call?
+	// And we're not adding the new Window to the local cache  - which will
+	// be a NoCache after the constructor call?
 	@Override
 	Window createWindow(final long windowStart) throws IOException {
 		return new Window(bytes, 0, bytes.length);

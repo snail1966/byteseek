@@ -116,6 +116,11 @@ public abstract class AbstractReader implements WindowReader, Iterable<Window> {
 	 *             if the window size is less than one or the WindowCache is
 	 *             null.
 	 */
+	// BNO-BS2: Does the windowSize here refer only to new Windows added to the Reader?  
+	// If we're passing in an existing WindowCache, then presumably the Windows in this 
+	// cache can be different sizes to windowSize (and indeed a mix of sizes within the 
+	// WindowCache itself - at least in theory!).  This also has implications for the
+	// read since we're assuming all Windows are of size windowSize.
 	public AbstractReader(final int windowSize, final WindowCache cache) {
 		if (windowSize < 1) {
 			throw new IllegalArgumentException(
